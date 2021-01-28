@@ -1,0 +1,3 @@
+right-bottom부터 left-top으로 탐색할 경우에
+for i in range(x, -1, -1)이 아닌
+for i in range(x-1, -1, -1)임을 주의하자
