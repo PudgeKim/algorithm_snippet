@@ -14,3 +14,16 @@ while left <= right:
 		right = mid -1
 
 return answer
+
+
+# 방법2
+left, right= 1, 100+1  # right값을 1늘려줌
+
+while (left < right-1):
+	mid = (left+right) // 2
+	if True:
+		left = mid
+	else:
+		right = mid
+
+return left  # left를 return
