@@ -1,0 +1,2 @@
+tree내에서 거리 등을 구하는 경우 node is None일 때 -1이나 0 등을
+return 시켜서 구해보자
