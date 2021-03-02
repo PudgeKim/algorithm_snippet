@@ -1,0 +1,41 @@
+dp = [] 빈 수열에서 시작
+
+1. dp가 비어있거나, 현재 dp의 마지막 원소보다 here이 더 클 경우
+-> dp의 뒤에 here추가 (dp.append(here))
+
+2. 그렇지 않을 경우
+-> dp배열에서 here의 lower bound를 찾고 그 자리를 here로 바꿈
+-> dp[lower_bound] = here
+
+
+lis + lower_bound
+# 백준 반도체 설계
+
+def get_lower_bound(arr, val):  # 이 코드는 숫자들이 중복안되는경우 기준임
+    lt, rt = 0, len(arr)-1      # 중복되는데 중복되는 숫자 빼야되는 경우
+    while lt<=rt:		# arr[mid] == val일때 -1 return 시키고 처리하자
+        mid = (lt+rt) // 2
+        if arr[mid] > val:
+            rt = mid - 1
+        else:
+            lt = mid + 1
+    return lt
+
+
+n = int(input())
+nums = list(map(int, input().split()))
+
+dp = [nums[0]]
+ans = 1
+for i in range(1, n):
+    cur = nums[i]
+    if cur > dp[-1]:
+        dp.append(cur)
+        ans += 1
+    else:
+        idx = get_lower_bound(dp, cur)
+        dp[idx] = cur
+
+#print(dp)
+print(ans)
+

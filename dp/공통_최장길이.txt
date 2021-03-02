@@ -1,0 +1,22 @@
+a b c d b e f e g
+b f d a c d f g e 가 있을 때 
+상대적 순서가 맞는 최장길이 구하기
+
+p.148 협상문제
+
+
+word1 = input()
+word2 = input()
+
+dp = [[0]*(len(word1)+1) for _ in range(len(word2)+1)]
+dp[0][0] = 0
+
+for i in range(1, len(word2)+1):
+    for j in range(1, len(word1)+1):
+        if word1[j-1] == word2[i-1]:  # 같으면
+            dp[i][j] = dp[i-1][j-1] + 1 # 왼쪽 대각선 + 1
+        else:                           # 다르면
+            dp[i][j] = max(dp[i-1][j], dp[i][j-1]) # 왼쪽이나 위중에 큰걸로
+
+
+print(dp[-1][-1])
